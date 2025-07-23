@@ -1,0 +1,6 @@
+{
+  "orchestrator_model": "gemma3:4b-it-qat",
+  "file_specialist_model": "jaraxxus-fileio-agent",
+  "code_specialist_model": "jaraxxus-code-agent",
+  "gemini_cli_path": "gemini"
+}

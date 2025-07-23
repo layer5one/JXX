@@ -1,0 +1,179 @@
+(.venv) PS C:\Users\james\OneDrive - layer5.one\Desktop\jaraxxus_o3> py snake.py
+None of PyTorch, TensorFlow >= 2.0, or Flax have been found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+  {
+    "$defs": {
+      "LLMConfigFactory": {
+        "additionalProperties": false,
+        "description": "Factory class for creating LLM configurations.",
+        "properties": {
+          "model_schema": {
+            "default": "NOT_SET",
+            "description": "Schema for configuration. This value will be automatically set.",
+            "title": "Model Schema",
+            "type": "string"
+          },
+          "backend": {
+            "description": "Backend for LLM",
+            "title": "Backend",
+            "type": "string"
+          },
+          "config": {
+            "additionalProperties": true,
+            "description": "Configuration for the LLM backend",
+            "title": "Config",
+            "type": "object"
+          }
+        },
+        "required": [
+          "backend",
+          "config"
+        ],
+        "title": "LLMConfigFactory",
+        "type": "object"
+      },
+      "MemReaderConfigFactory": {
+        "additionalProperties": false,
+        "description": "Factory class for creating MemReader configurations.",
+        "properties": {
+          "model_schema": {
+            "default": "NOT_SET",
+            "description": "Schema for configuration. This value will be automatically set.",
+            "title": "Model Schema",
+            "type": "string"
+          },
+          "backend": {
+            "description": "Backend for MemReader",
+            "title": "Backend",
+            "type": "string"
+          },
+          "config": {
+            "additionalProperties": true,
+            "description": "Configuration for the MemReader backend",
+            "title": "Config",
+            "type": "object"
+          }
+        },
+        "required": [
+          "backend",
+          "config"
+        ],
+        "title": "MemReaderConfigFactory",
+        "type": "object"
+      },
+      "SchedulerConfigFactory": {
+        "additionalProperties": false,
+        "description": "Factory class for creating scheduler configurations.",
+        "properties": {
+          "model_schema": {
+            "default": "NOT_SET",
+            "description": "Schema for configuration. This value will be automatically set.",
+            "title": "Model Schema",
+            "type": "string"
+          },
+          "backend": {
+            "description": "Backend for scheduler",
+            "title": "Backend",
+            "type": "string"
+          },
+          "config": {
+            "additionalProperties": true,
+            "description": "Configuration for the scheduler backend",
+            "title": "Config",
+            "type": "object"
+          }
+        },
+        "required": [
+          "backend",
+          "config"
+        ],
+        "title": "SchedulerConfigFactory",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "model_schema": {
+        "default": "NOT_SET",
+        "description": "Schema for configuration. This value will be automatically set.",
+        "title": "Model Schema",
+        "type": "string"
+      },
+      "user_id": {
+        "default": "root",
+        "description": "User ID for the MOS. This is used to distinguish between different users' memories.",
+        "title": "User Id",
+        "type": "string"
+      },
+      "session_id": {
+        "default": "101647bc-c880-45c0-b5f5-f48409a628f7",
+        "description": "Session ID for the MOS. This is used to distinguish between different dialogue",
+        "title": "Session Id",
+        "type": "string"
+      },
+      "chat_model": {
+        "$ref": "#/$defs/LLMConfigFactory",
+        "description": "LLM configuration for the chat model in the MOS"
+      },
+      "mem_reader": {
+        "$ref": "#/$defs/MemReaderConfigFactory",
+        "description": "MemReader configuration for the MOS"
+      },
+      "mem_scheduler": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/SchedulerConfigFactory"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Memory scheduler configuration for managing memory operations"
+      },
+      "max_turns_window": {
+        "default": 15,
+        "description": "Maximum number of turns to keep in the conversation history",
+        "title": "Max Turns Window",
+        "type": "integer"
+      },
+      "top_k": {
+        "default": 5,
+        "description": "Maximum number of memories to retrieve for each query",
+        "title": "Top K",
+        "type": "integer"
+      },
+      "enable_textual_memory": {
+        "default": true,
+        "description": "Enable textual memory for the MemChat",
+        "title": "Enable Textual Memory",
+        "type": "boolean"
+      },
+      "enable_activation_memory": {
+        "default": false,
+        "description": "Enable activation memory for the MemChat",
+        "title": "Enable Activation Memory",
+        "type": "boolean"
+      },
+      "enable_parametric_memory": {
+        "default": false,
+        "description": "Enable parametric memory for the MemChat",
+        "title": "Enable Parametric Memory",
+        "type": "boolean"
+      },
+      "enable_mem_scheduler": {
+        "default": false,
+        "description": "Enable memory scheduler for automated memory management",
+        "title": "Enable Mem Scheduler",
+        "type": "boolean"
+      },
+      "PRO_MODE": {
+        "default": false,
+        "description": "Enable PRO mode for complex query decomposition",
+        "title": "Pro Mode",
+        "type": "boolean"
+      }
+    },
+    "title": "MOSConfig",
+    "type": "object"
+  }
+(.venv) PS C:\Users\james\OneDrive - layer5.one\Desktop\jaraxxus_o3>
